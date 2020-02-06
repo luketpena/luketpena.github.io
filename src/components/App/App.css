@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css?family=Alegreya+Sans+SC:100&display=swap');
+@font-face {
+  font-family: 'Major Mono Display';
+  font-weight: 5;
+  src: local('Major Mono Display'), url('../../fonts/MajorMonoDisplay-Regular.ttf') format('truetype');
+}
+
+:root {
+  --font-title: 'Major Mono Display', sans-serif;
+  --font-header: 'Alegreya Sans SC', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: black;
+}
+
+.highlight {
+  color: #FFC145;
+}
+
+.anchor {
+  display:block;
+  padding-top: 48px;
+  margin-top: -48px;
+}

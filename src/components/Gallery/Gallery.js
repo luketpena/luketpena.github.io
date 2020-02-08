@@ -94,7 +94,7 @@ const demoInfo = [
     src: 'https://i.imgur.com/99bsh6m.gif',
     title: <span>Dawg of the <span className="highlight">Dead</span></span>,
     tagline: <span><span className="highlight">Survive</span> with a Friend</span>,
-    description: `The zombies are coming, and only your dog can stop them. A solo game-jam project created under 48hours.`,
+    description: `The zombies are coming, and only your dog can stop them. A solo game-jam project created under 48 hours.`,
     url: 'https://gm48.net/game/1066/dawg-of-the-dead',
     button: 'Download now from GM48',
     icon: faGamepad
@@ -125,7 +125,7 @@ export default function Gallery() {
   return (
     <Container id="gallery">
       <h2><span className="highlight">P</span>rojects</h2>
-      <GalleryBox>
+      <GalleryBox id="galleryBox">
         {renderGallery()}
       </GalleryBox>
     </Container>

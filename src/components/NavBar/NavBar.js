@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
 import { Link } from "react-scroll";
+import getOffsetTop from '../../modules/getOffsetTop';
 
 const Container = styled.nav`
   position: fixed;
@@ -10,8 +11,8 @@ const Container = styled.nav`
   z-index: 100;
   display: flex;
   transition: all .3s;
-  background-color: ${props=>(props.scrollY>((window.innerHeight*2)-48)? 'rgba(0,0,0,.8)' : '')};
-  backdrop-filter: ${props=>(props.scrollY>((window.innerHeight*2)-48)? 'blur(4px)' : 'blur(0px)')};
+  background-color: ${props=>(props.scrollY>props.fadePos? 'rgba(0,0,0,.8)' : '')};
+  backdrop-filter: ${props=>(props.scrollY>props.fadePos? 'blur(4px)' : 'blur(0px)')};
   .menu-item {
     text-decoration: none;
     opacity: .6;
@@ -42,10 +43,12 @@ export default function NavBar() {
 
   let [scrollY, setScrollY] = useState(0);
   const [mount, setMount] = useState(false);
+  const [galleryPos, setGalleryPos] = useState(0);
 
   useEffect(()=>{
     if (!mount) {
       setMount(true);
+      setGalleryPos(getOffsetTop('galleryBox'));
       window.addEventListener('scroll',handleScroll,true);
     }
   },[scrollY, mount]);
@@ -76,7 +79,7 @@ export default function NavBar() {
   }
 
   return (
-    <Container scrollY={scrollY}>
+    <Container scrollY={scrollY} fadePos={galleryPos}>
       {renderMenuItems()}
     </Container>
   )

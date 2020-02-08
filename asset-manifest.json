@@ -1,28 +1,28 @@
 {
   "files": {
     "main.css": "/portfolio/static/css/main.ab03b484.chunk.css",
-    "main.js": "/portfolio/static/js/main.af4ab381.chunk.js",
-    "main.js.map": "/portfolio/static/js/main.af4ab381.chunk.js.map",
+    "main.js": "/portfolio/static/js/main.8f8cd78d.chunk.js",
+    "main.js.map": "/portfolio/static/js/main.8f8cd78d.chunk.js.map",
     "runtime-main.js": "/portfolio/static/js/runtime-main.44087e9b.js",
     "runtime-main.js.map": "/portfolio/static/js/runtime-main.44087e9b.js.map",
     "static/js/2.d069c464.chunk.js": "/portfolio/static/js/2.d069c464.chunk.js",
     "static/js/2.d069c464.chunk.js.map": "/portfolio/static/js/2.d069c464.chunk.js.map",
     "index.html": "/portfolio/index.html",
-    "precache-manifest.e6fbc2afc92d40aeac708b90cb7c23e2.js": "/portfolio/precache-manifest.e6fbc2afc92d40aeac708b90cb7c23e2.js",
+    "precache-manifest.7733990f582a178bfa8bb1d7d34be4be.js": "/portfolio/precache-manifest.7733990f582a178bfa8bb1d7d34be4be.js",
     "service-worker.js": "/portfolio/service-worker.js",
     "static/css/main.ab03b484.chunk.css.map": "/portfolio/static/css/main.ab03b484.chunk.css.map",
     "static/js/2.d069c464.chunk.js.LICENSE": "/portfolio/static/js/2.d069c464.chunk.js.LICENSE",
     "static/media/App.css": "/portfolio/static/media/MajorMonoDisplay-Regular.c04d1551.ttf",
-    "static/media/portfolio_functions.png": "/portfolio/static/media/portfolio_functions.ef37dc4a.png",
-    "static/media/portfolio_greenNeighbor.png": "/portfolio/static/media/portfolio_greenNeighbor.8eff5415.png",
-    "static/media/portfolio_nfwine.png": "/portfolio/static/media/portfolio_nfwine.73f2658c.png",
-    "static/media/portfolio_pixelbox.png": "/portfolio/static/media/portfolio_pixelbox.7483c229.png",
-    "static/media/portfolio_tictactoe.png": "/portfolio/static/media/portfolio_tictactoe.6dc5edd7.png"
+    "static/media/portfolio_functions.jpg": "/portfolio/static/media/portfolio_functions.70d68ca2.jpg",
+    "static/media/portfolio_greenNeighbor.jpg": "/portfolio/static/media/portfolio_greenNeighbor.4127288e.jpg",
+    "static/media/portfolio_nfwine.jpg": "/portfolio/static/media/portfolio_nfwine.57ea08a6.jpg",
+    "static/media/portfolio_pixelbox.jpg": "/portfolio/static/media/portfolio_pixelbox.efef440b.jpg",
+    "static/media/portfolio_tictactoe.jpg": "/portfolio/static/media/portfolio_tictactoe.5fe81302.jpg"
   },
   "entrypoints": [
     "static/js/runtime-main.44087e9b.js",
     "static/js/2.d069c464.chunk.js",
     "static/css/main.ab03b484.chunk.css",
-    "static/js/main.af4ab381.chunk.js"
+    "static/js/main.8f8cd78d.chunk.js"
   ]
 }

@@ -18,6 +18,7 @@ const Container = styled.div`
     text-align: center;
     font-family: monospace;
     font-size: 1.5em;
+    pointer-events: none;
   }
 `;
 
@@ -44,17 +45,36 @@ const Card = styled.div`
   align-items: center;
   width: 250px;
   margin: 0 2%;
+  padding: 8px;
+  border-radius: 8px 50% 8px 50%;
+  transition: background-color .3s;
   .icon {
     font-size: 8em;
     color: white;
+    transition: transform 1.5s;
+    pointer-events: none;
   }
   h4 {
     font-family: var(--font-title);
     color: white;
+    pointer-events: none;
   }
   p {
     font-family: monospace;
     font-size: 1.5em;
+    opacity: 0;
+    transition: all .2s;
+    pointer-events: none;
+  }
+  &:hover {
+    background-color: rgba(255,255,255,.1);
+    .icon {
+      transform: scale(1.2) translateY(-16px);
+    }
+    p {
+      opacity: 1;
+      transform: scale(1.1);
+    }
   }
 `;
 

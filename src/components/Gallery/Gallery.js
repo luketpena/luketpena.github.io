@@ -20,6 +20,7 @@ const Container = styled.div`
     color: white;
     text-align: center;
     font-size: 8em;
+    pointer-events: none;
   }
   
   

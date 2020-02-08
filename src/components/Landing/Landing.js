@@ -41,6 +41,7 @@ const TitleBox = styled.div`
   
   font-weigth: normal;
   font-size: 5vw; 
+  pointer-events: none;
 
   h2 {
     animation: ${animTagline} ${rate}s linear;
@@ -74,6 +75,7 @@ const AboutSection = styled.div`
   text-align: center;
   margin: 0 auto;
   transition: opacity .6s;
+  pointer-events: none;
   opacity: ${props=>( (props.y<props.scrollY+(window.innerHeight*.5) && props.y>props.scrollY-(window.innerHeight*.5))? '1' : '0')};
   p {
     margin: 24px 0;

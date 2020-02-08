@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import styled from 'styled-components';
 import fitty from 'fitty';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -7,16 +7,18 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const Container = styled.div`
   height: 40vh;
-  flex-grow: 5;
+  flex-grow: 8;
   min-width: 256px;
   position: relative;
   overflow: hidden;
-  background-image: url(${props=>props.src});
+  margin: 2px;
+
   img {
-    max-height: 100%;
-    min-width: 100%;
+    height: 100%;
+    width: 100%;
     object-fit: cover;
     transition: all .5s;
+    position: absolute;
   }
   &:first-child, &:nth-child(5n) {
     min-width: 50%;
@@ -24,10 +26,13 @@ const Container = styled.div`
       min-width: 100%;
     }
   }
+  &:nth-child(3n) {
+    flex-grow: 1;
+  }
 `;
 
 const Overlay = styled.div`
-  background-color: rgba(0,0,0,.6);
+  background-color: rgba(24,29,50,.6);
   position: absolute;
   width: 100%;
   height: 100%;
@@ -40,11 +45,13 @@ const Overlay = styled.div`
   align-items: center;
   justify-content: center;
   z-index: 1;
-
+  
   
   &:hover {
     opacity: 1;
     transform: scale(1.05);
+    backdrop-filter: blur(8px);
+    filter: saturate(1);
   }
   &:hover ~ img {
     cursor: pointer;
@@ -76,7 +83,7 @@ const DetailBox = styled.div`
   width: 100%;
   height: 100%;
   transition: top 1s;
-  padding: 32px;
+  padding: 5%;
   box-sizing: border-box;
   top: ${props=>(props.active? '0' : '100')}%;
   text-align: center;
@@ -104,7 +111,7 @@ const DetailBox = styled.div`
     border-radius: 8px;
     background: none;
     padding: 4px 8px;
-    transition: color .4s, background .4s, padding .8s;
+    transition: color .2s, background .2s, padding .4s;
     font-size: 18px;
 
     display: block;
@@ -151,7 +158,7 @@ export default function GalleryCard(props) {
         <DetailBox active={active} >
           <h4>{props.project.tagline}</h4>
           <p>{props.project.description}</p>
-          <a target="_blank" href={props.project.url}><button><FontAwesomeIcon icon={props.project.icon} />  {props.project.button}</button></a>
+          <a target="_blank" rel="noopener noreferrer" href={props.project.url}><button><FontAwesomeIcon icon={props.project.icon} />  {props.project.button}</button></a>
         </DetailBox>
       </Overlay>
       <img src={props.project.src} alt={props.project.title}/>

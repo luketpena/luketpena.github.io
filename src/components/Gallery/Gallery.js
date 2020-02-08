@@ -1,22 +1,51 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { faCodepen, faGithub, faYoutube } from '@fortawesome/free-brands-svg-icons';
-import { faGlobe } from '@fortawesome/free-solid-svg-icons';
+import { faGamepad } from '@fortawesome/free-solid-svg-icons';
 
 //-----< Component Imports >-----\\
 import GalleryCard from './GalleryCard';
 
 //-----< Image Imports >-----\\
 import image_tictactoe from '../../images/portfolio_tictactoe.png';
+import image_functions from '../../images/portfolio_functions.png';
+import image_greenNeighbor from '../../images/portfolio_greenNeighbor.png';
+import image_nfwine from '../../images/portfolio_nfwine.png';
+import image_pixelbox from '../../images/portfolio_pixelbox.png';
 
 const Container = styled.div`
+  
+  h2 {
+    font-family: var(--font-header);
+    color: white;
+    text-align: center;
+    font-size: 8em;
+  }
+  
+  
+`;
+
+const GalleryBox = styled.div`
   display: flex;
   flex-wrap: wrap;
+  position: relative;
+  z-index: 10;
+  ::before {
+    box-shadow: 0 -50px 300px 100px rgba(255,127,0,.2);
+    mix-blend-mode: darken;
+    content: " ";
+  
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+  }
 `;
 
 const demoInfo = [
   {
-    src: 'https://images.pexels.com/photos/3380967/pexels-photo-3380967.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+    src: image_pixelbox,
     title: <span>Pixelbox <span className="highlight">Creator</span></span>,
     tagline: <span>Bringing Pixels to <span className="highlight">Life.</span></span>,
     description: 'Bring new depth to your art with this parallax image visualizer.',
@@ -25,7 +54,7 @@ const demoInfo = [
     icon: faGithub
   },
   {
-    src: 'https://images.pexels.com/photos/3552948/pexels-photo-3552948.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+    src: image_greenNeighbor,
     title: <span>The Green <span className="highlight">Neighbor</span> Project</span>,
     tagline: <span>Green Energy, made <span className="highlight">Accessible.</span></span>,
     description: 'A collaborative project to help find renewable energy near you.',
@@ -34,7 +63,16 @@ const demoInfo = [
     icon: faGithub
   },
   {
-    src: 'https://images.pexels.com/photos/3576265/pexels-photo-3576265.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500',
+    src: 'https://i.imgur.com/GQuVIfN.gif',
+    title: <span>Washed <span className="highlight">Up</span></span>,
+    tagline: <span><span className="highlight">Adventure</span> on the High Seas</span>,
+    description: 'Collect gold, unlock upgrades, fire your cannons, and face the elements in this adventure for mobile and PC.',
+    url: 'https://www.youtube.com/watch?v=2cedKXnKlFE',
+    button: 'View trailer on YouTube',
+    icon: faYoutube
+  },
+  {
+    src: image_nfwine,
     title: <span>The New France <span className="highlight">Wine</span> Company</span>,
     tagline: <span>Fine <span className="highlight">Wine</span> in the Twin Cities</span>,
     description: 'A suite of management tools to complement a beautiful customer-facing website.',
@@ -52,24 +90,28 @@ const demoInfo = [
     icon: faCodepen
   },
   {
-    src: 'https://images.pexels.com/photos/3522094/pexels-photo-3522094.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500',
+    src: 'https://i.imgur.com/99bsh6m.gif',
+    title: <span>Dawg of the <span className="highlight">Dead</span></span>,
+    tagline: <span><span className="highlight">Survive</span> with a Friend</span>,
+    description: `The zombies are coming, and only your dog can stop them. A solo game-jam project created under 48hours.`,
+    url: 'https://gm48.net/game/1066/dawg-of-the-dead',
+    button: 'Download now from GM48',
+    icon: faGamepad
+  },
+  {
+    src: image_functions,
     title: <span>Guide to Anonymous & Arrow <span className="highlight">Functions</span></span>,
     tagline: <span>The <span className="highlight">Lineage</span> of Functions</span>,
     description: 'The relationships between types of functions, visualized.',
     url: 'https://luketpena.github.io/functions-explained/',
     button: 'Visit GitHub Page',
     icon: faGithub
-  },
-  {
-    src: 'https://images.pexels.com/photos/3378994/pexels-photo-3378994.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500',
-    title: <span>Washed <span className="highlight">Up</span></span>,
-    tagline: <span><span className="highlight">Adventure</span> on the High Seas</span>,
-    description: 'Collect gold, unlock upgrades, fire your cannons, and face the elements in this adventure for mobile and PC.',
-    url: 'https://www.youtube.com/watch?v=2cedKXnKlFE',
-    button: 'View trailer on YouTube',
-    icon: faYoutube
-  },
+  }
 ]
+function shuffle(array) {
+  array.sort(() => Math.random() - 0.5);
+}
+shuffle(demoInfo)
 
 export default function Gallery() {
 
@@ -80,9 +122,11 @@ export default function Gallery() {
   }
 
   return (
-    <Container>
-      <div className="anchor" id="gallery"/>
-      {renderGallery()}
+    <Container id="gallery">
+      <h2><span className="highlight">P</span>rojects</h2>
+      <GalleryBox>
+        {renderGallery()}
+      </GalleryBox>
     </Container>
 
   )

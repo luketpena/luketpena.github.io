@@ -1,23 +1,58 @@
 import React, {useEffect, useState} from 'react';
-import styled from 'styled-components';
+import styled, {keyframes} from 'styled-components';
 
-const Container = styled.div.attrs(props=>({
-  style: {
-    backgroundPosition: `0 ${props.offset*.5}px`,
-  },
-}))`
+import getOffsetTop from '../../modules/getOffsetTop';
+
+
+const rate = 3;
+
+const Container = styled.div`
   height: 200vh;
-  box-shadow: inset 0 -150px 200px -96px rgba(255,127,0,.2);
-  background-color: #0f0700;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='112' height='196' viewBox='0 0 28 49'%3E%3Cg fill-rule='evenodd'%3E%3Cg id='hexagons' fill='%23252100' fill-opacity='0.2' fill-rule='nonzero'%3E%3Cpath d='M13.99 9.25l13 7.5v15l-13 7.5L1 31.75v-15l12.99-7.5zM3 17.9v12.7l10.99 6.34 11-6.35V17.9l-11-6.34L3 17.9zM0 15l12.98-7.5V0h-2v6.35L0 12.69v2.3zm0 18.5L12.98 41v8h-2v-6.85L0 35.81v-2.3zM15 0v7.5L27.99 15H28v-2.31h-.01L17 6.35V0h-2zm0 49v-8l12.99-7.5H28v2.31h-.01L17 42.15V49h-2z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  position: relative;
+`;
+
+const animTagline = keyframes`
+  0% {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  15% {
+    opacity: 0;
+  }
+
+  50% {
+    transform: translateX(0px);
+    opacity: 1;
+  }
+
+
+  85% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
 `;
 
 const TitleBox = styled.div`
   text-align: center;
   color: white;
-  font-family: var(--font-header);
-  font-size: 5vw;
+  
   font-weigth: normal;
+  font-size: 5vw; 
+
+  h2 {
+    animation: ${animTagline} ${rate}s linear;
+    opacity: 0;
+    font-size: .25em;
+    margin: 0;
+    font-family: monospace;
+  }
+  h1 {
+    margin: 0;
+    font-family: var(--font-header);
+  }
 `;
 
 const TitleSection = styled.div`
@@ -35,61 +70,96 @@ const AboutSection = styled.div`
   justify-content: center;
   align-items: center;
   color: white;
+  max-width 500px;
+  text-align: center;
+  margin: 0 auto;
+  transition: opacity .6s;
+  opacity: ${props=>( (props.y<props.scrollY+(window.innerHeight*.5) && props.y>props.scrollY-(window.innerHeight*.5))? '1' : '0')};
   p {
-    margin: 0;
+    margin: 24px 0;
+    font-family: monospace;
+    font-size: 1.2em;
+  }
+  h2 {
+    font-family: var(--font-header);
   }
 `;
 
-const tagline = ['web developer','designer','game designer','composer','animator'];
+const tagline = [
+  'game designer',
+  'full-stack engineer',
+  'visual designer',
+  'SQL apprentice',
+  'RESTful practitioner',
+  'Kontakt maker',
+  'late-night coder',
+  'CSS3 aficionado',
+  'jQuery curious',
+  'React developer',
+  'Node.js enthusiast',
+  'GML master',
+  'GLSL dabbler',
+
+  'orchestral composer',
+  'sound designer',
+  'clarinetist',
+  'pianist',
+
+  'pixel artist',
+  'animator',
+];
+
+function shuffle(array) {
+  array.sort(() => Math.random() - 0.5);
+}
+
+shuffle(tagline);
+tagline.unshift('web developer');
 
 export default function Landing() {
 
   const [taglineStep, setTaglineStep] = useState(0);
   const [mount, setMount] = useState(false);
   const [scrollY, setScrollY] = useState(0);
+  const [aboutY, setAboutY] = useState(getOffsetTop('about'))
 
   useEffect(()=>{
     if (!mount) {
       setMount(true);
       window.addEventListener('scroll',handleScroll,true);
+      setAboutY(getOffsetTop('about'));
     }
+    
     setTimeout(()=>{
-      if (taglineStep===tagline.length-1) {
-        setTaglineStep(0);
-      } else {
-        setTaglineStep(taglineStep+1);
-      }
-    },1000)
-  },[taglineStep, mount]);
+      setTaglineStep(taglineStep+1);
+    },rate*1010);
+
+    
+    
+
+  },[taglineStep, mount, scrollY]);
 
   function handleScroll() {
     setScrollY(window.scrollY);
   }
 
-  // function getOffsetTop( elem ) {
-  //   var offsetTop = 0;
-  //   do {
-  //     if ( !isNaN( elem.offsetTop ) )
-  //     {
-  //         offsetTop += elem.offsetTop;
-  //     }
-  //   } while( elem === elem.offsetTop );
-  //   return offsetTop;
-  // }
-
   return (
-    <Container offset={scrollY}>
-      <TitleSection>
-        <TitleBox>
-          <h1>Luke <span className="highlight">Peña</span></h1>
-          {/* <h2>{tagline[taglineStep]}</h2> */}
-        </TitleBox>
-      </TitleSection>
-      <div className="anchor" id="about"/>
-      <AboutSection>
-        <p></p>
-        <p>This is what a second paragraph looks like.</p>
-      </AboutSection>
+    <Container>
+      
+      
+        <TitleSection id="home">
+          <TitleBox>
+            <h1><span>Luke</span> <span className="highlight">Peña</span></h1>
+            <h2 key={taglineStep}>{tagline[taglineStep % (tagline.length)]}</h2>
+          </TitleBox>
+        </TitleSection>
+        <AboutSection id="about" scrollY={scrollY} y={aboutY}>
+          <h2 className="highlight">Nice to meet you.</h2>
+          <p>I love making things and I can't seem figure out how to stop.</p>
+          <p>Since I first started creating video games over fifteen years ago, I've coded everything from instrument interfaces in Kontakt to RESTful APIs.</p>
+          <p>I think the internet could always use more fun, helpful, (sometimes beautiful) things.</p>
+          <p>So I'm doing my best to be a part of that, one line of code at a time.</p>
+        </AboutSection>
     </Container>
   )
 

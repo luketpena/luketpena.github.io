@@ -13,6 +13,7 @@
     "fitty": "^2.3.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
+    "react-parallax": "^3.0.3",
     "react-scripts": "3.3.0",
     "react-scroll": "^1.7.16",
     "styled-components": "^5.0.0"

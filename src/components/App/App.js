@@ -7,6 +7,7 @@ import {Parallax} from 'react-parallax';
 //-----< Component Imports >-----\\
 import NavBar from '../NavBar/NavBar';
 import Landing from '../Landing/Landing';
+import Principles from '../Principles/Principles';
 import Gallery from '../Gallery/Gallery';
 import Contact from '../Contact/Contact';
 
@@ -30,10 +31,9 @@ export default function App() {
         <NavBar />
 
         <Landing/>
-
+        <Principles />
         <Gallery/>
-        
-        <Contact />
+      
       </Parallax>
     </Container>
   );

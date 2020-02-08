@@ -3,8 +3,6 @@ import styled from 'styled-components';
 import fitty from 'fitty';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-
-
 const Container = styled.div`
   height: 40vh;
   flex-grow: 8;

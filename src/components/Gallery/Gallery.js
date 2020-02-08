@@ -26,6 +26,7 @@ const Container = styled.div`
 `;
 
 const GalleryBox = styled.div`
+  background-color: rgba(25,29,50,1);
   display: flex;
   flex-wrap: wrap;
   position: relative;

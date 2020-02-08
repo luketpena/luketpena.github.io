@@ -33,9 +33,10 @@ const Container = styled.nav`
 const menuList = [
   {name: 'hello.', href: "home"},
   {name: `i am luke.`, href: 'about'},
+  {name: `i believe things.`, href: 'principles'},
   {name: `i make stuff.`, href: 'gallery'},
-  {name: 'say hi.', href: "contact"}
-];
+  
+]; //{name: 'say hi.', href: "contact"}
 
 export default function NavBar() {
 

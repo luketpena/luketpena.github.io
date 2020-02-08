@@ -7,11 +7,11 @@ import { faGamepad } from '@fortawesome/free-solid-svg-icons';
 import GalleryCard from './GalleryCard';
 
 //-----< Image Imports >-----\\
-import image_tictactoe from '../../images/portfolio_tictactoe.png';
-import image_functions from '../../images/portfolio_functions.png';
-import image_greenNeighbor from '../../images/portfolio_greenNeighbor.png';
-import image_nfwine from '../../images/portfolio_nfwine.png';
-import image_pixelbox from '../../images/portfolio_pixelbox.png';
+import image_tictactoe from '../../images/portfolio_tictactoe.jpg';
+import image_functions from '../../images/portfolio_functions.jpg';
+import image_greenNeighbor from '../../images/portfolio_greenNeighbor.jpg';
+import image_nfwine from '../../images/portfolio_nfwine.jpg';
+import image_pixelbox from '../../images/portfolio_pixelbox.jpg';
 
 const Container = styled.div`
   
